@@ -1,0 +1,121 @@
+$forum-base-colors: (
+  50: rgb(3, 139, 225),
+  100: rgb(3, 139, 225),
+  200: rgb(3, 139, 225),
+  300: rgb(3, 139, 225),
+  400: rgb(3, 139, 225),
+  500: rgb(3, 139, 225),
+  600: rgb(3, 139, 225),
+  700: rgb(3, 139, 225),
+  800: rgb(3, 139, 225),
+  900: rgb(3, 139, 225),
+  A100: rgb(3, 139, 225),
+  A200: rgb(3, 139, 225),
+  A400: rgb(3, 139, 225),
+  A700: rgb(3, 139, 225)
+);
+
+$forum-accent-colors: (
+  50: #b0bec5,
+  100: #b0bec5,
+  200: #b0bec5,
+  300: #b0bec5,
+  400: #b0bec5,
+  500: #b0bec5,
+  600: #b0bec5,
+  700: #b0bec5,
+  800: #b0bec5,
+  900: #b0bec5,
+  A100: #b0bec5,
+  A200: #b0bec5,
+  A400: #b0bec5,
+  A700: #b0bec5
+);
+
+$forum-contrast: (
+  50: #f5f5f5,
+  100: #f5f5f5,
+  200: #f5f5f5,
+  300: #f5f5f5,
+  400: #f5f5f5,
+  500: #f5f5f5,
+  600: #f5f5f5,
+  700: #f5f5f5,
+  800: #f5f5f5,
+  900: #f5f5f5,
+  A100: #f5f5f5,
+  A200: #f5f5f5,
+  A400: #f5f5f5,
+  A700: #f5f5f5
+);
+
+// foreground and background colors
+$forum-foreground: (
+  base: #484848,
+  divider: rgba(black, 0.12),
+  dividers: rgba(black, 0.12),
+  disabled: rgba(black, 0.38),
+  disabled-button: rgba(black, 0.38),
+  disabled-text: rgba(black, 0.38),
+  hint-text: rgba(black, 0.38),
+  secondary-text: #aba9a8,
+  icon: #aba9a8,
+  icons: #484848,
+  text: #484848,
+  slider-min: rgba(black, 0.87),
+  slider-off: rgba(black, 0.26),
+  slider-off-active: rgba(black, 0.38),
+  success: #d0e9c6,
+  info: #d9edf7,
+  warning: #faf2cc,
+  error: #f2dede,
+  table-actions: #a6a6a6,
+  stroke: #ddddde
+);
+
+$forum-background: (
+  status-bar: #e0e0e0,
+  app-bar: #f5f5f5,
+  background: #ffffff,
+  hover: rgba(136, 137, 135, 0.04),
+  card: white,
+  dialog: white,
+  disabled-button: rgba(black, 0.12),
+  raised-button: white,
+  focused-button: rgba(black, 0.06),
+  selected-button: #e0e0e0,
+  selected-disabled-button: #bdbdbd,
+  disabled-button-toggle: #eeeeee,
+  unselected-chip: #e0e0e0,
+  disabled-list-option: #eeeeee,
+  success: #3c763d,
+  info: #31708f,
+  warning: #8a6d3b,
+  error: #a94442,
+  tools: #e4e3e3,
+  header: #dcdcdd,
+  even: #fff,
+  odd: #f5f5f5,
+  chart: rgba(248, 248, 248, 0.7),
+  search: #ededed,
+  selected: #f5f5f5
+);
+
+// material variables
+@import '~@angular/material/theming';
+@include mat-core();
+
+$forum-base-palette: map-merge($forum-base-colors,  (contrast: $forum-contrast));
+$forum-accent-palette: map-merge($forum-accent-colors,  (contrast: $forum-contrast));
+
+// general colors
+$forum-primary: mat-palette($forum-base-palette);
+$forum-accent: mat-palette($forum-accent-palette, A200, A100, A400);
+$forum-warn: mat-palette($mat-red);
+
+$mat-light-theme-background: $forum-background;
+$mat-light-theme-foreground: $forum-foreground;
+
+$forum-theme: mat-light-theme($forum-primary, $forum-accent, $forum-warn);
+@include angular-material-theme($forum-theme);
+

@@ -1,0 +1,42 @@
+<div class="forum-wrapper">
+  <div class="forum-container">
+    <mat-toolbar>
+      {{forum?.name}}
+    </mat-toolbar>
+    <mat-list>
+      <h3 mat-subheader>
+        <span>Subforums</span>
+        <span class="filler"></span>
+        <button mat-icon-button>
+          <mat-icon mat-list-icon color="primary" (click)="createNewForum()">add_circle</mat-icon>
+        </button>
+      </h3>
+      <ng-container *ngIf="forum.subForums.length > 0">
+        <mat-list-item (click)="openForum(f.id)" *ngFor="let f of forum.subForums">
+          <mat-icon mat-list-icon color="primary">folder</mat-icon>
+          <h4 mat-line>{{f.name}}</h4>
+          <p mat-line> {{f.modified | date}} </p>
+        </mat-list-item>
+      </ng-container>
+      <mat-divider *ngIf="forum.subForums.length > 0 && forum.topics.length > 0"></mat-divider>
+      <h3 mat-subheader>
+        <span>Topics</span>
+        <span class="filler"></span>
+        <button mat-icon-button>
+          <mat-icon mat-list-icon color="primary" (click)="createNewTopic()">add_circle</mat-icon>
+        </button>
+      </h3>
+      <ng-container *ngIf="forum.topics.length > 0">
+        <mat-list-item (click)="openTopic(t.id)" *ngFor="let t of forum.topics">
+          <mat-icon mat-list-icon color="primary">note</mat-icon>
+          <h4 mat-line>{{t.header}}</h4>
+          <p mat-line> {{t.modified | date}} </p>
+        </mat-list-item>
+      </ng-container>
+    </mat-list>
+  </div>
+
+  <div class="topic-container" [ngStyle]="{'width': topicId ? '50%' : '0'}" [ngClass]="{'opened': topicId}">
+    <app-topic *ngIf="topicId" [topicId]="topicId" (close)="closeTopic()"></app-topic>
+  </div>
+</div>

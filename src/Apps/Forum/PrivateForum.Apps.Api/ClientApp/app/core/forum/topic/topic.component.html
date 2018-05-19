@@ -1,0 +1,57 @@
+<div *ngIf="!topic" class="spinner-container">
+  <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+</div>
+<div *ngIf="topic" class="topic-container">
+  <!-- <mat-toolbar color="accent">
+    <span class="topic-name">
+      {{topic?.header}}
+      <mat-icon mat-list-icon>mode edit</mat-icon>
+    </span>
+    <span class="filler"></span>
+    
+  </mat-toolbar> -->
+  <mat-toolbar>
+    <span>{{topic?.header}}</span>
+    <span class="filler"></span>
+    <button mat-icon-button>
+      <mat-icon mat-list-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon mat-list-icon>delete</mat-icon>
+    </button>
+    <button mat-icon-button>
+        <mat-icon mat-list-icon (click)="closeTopic()">clear</mat-icon>
+      </button>
+  </mat-toolbar>
+
+  <div class="messages-container">
+    <mat-card *ngFor="let message of topic.messages" [id]="message.id">
+      <mat-card-header>
+        <div mat-card-avatar class="avatar" [style.background-image.url]="message.avatarUrl"></div>
+        <mat-card-title>{{message.firstName}} {{message.lastName}}</mat-card-title>
+        <mat-card-subtitle>
+          {{message.modified | date}}
+          <a *ngIf="message.replyId" href="{{getUrl() | async}}#{{message.replyId}}">replied to {{message.replyId}}</a>
+        </mat-card-subtitle>
+        <mat-icon mat-list-icon (click)="replyToMessage(message.id)">reply</mat-icon>
+      </mat-card-header>
+      <mat-card-content [innerHTML]="message.content | safe">
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="editor-container">
+    <app-ngx-editor [placeholder]="'Write new message...'" [config]="config" [(ngModel)]="activeMessage.content"></app-ngx-editor>
+    <div class="action-container">
+      <mat-chip-list>
+        <mat-chip *ngIf="activeMessage.replyId" color="primary" selected="true" [removable]="true" (remove)="removeReplyId()">
+          Replying to a message
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+
+      </mat-chip-list>
+      <span class="filler"></span>
+      <button mat-raised-button color="primary" (click)="sendMessage()">SEND</button>
+    </div>
+  </div>
+</div>

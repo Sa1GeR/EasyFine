@@ -1,0 +1,73 @@
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.topic-container {
+  
+  margin-top: 70px;
+  height: calc(100% - 70px);
+  display: flex;
+  flex-direction: column;
+
+  .filler {
+    flex: 1 1 auto;
+  }
+
+  mat-toolbar {
+    button {
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.12);
+      }
+    }
+  }
+
+  .messages-container {
+    flex: 1 1 auto;
+    overflow-y: auto;
+
+    mat-card {
+      margin: 16px 0;
+      mat-card-header {
+        cursor: pointer;
+
+        mat-icon {
+          margin-right: 8px;
+          opacity: 0;
+          transition: opacity 0.1s ease-in;
+        }
+
+        &:hover {
+          mat-icon {
+            opacity: 1;
+          }
+        }
+  
+        .avatar {
+          background-image: url('https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&f=y');
+          background-size: cover;
+        }
+      }
+      
+    }
+  }
+
+  .editor-container {
+    .action-container {
+      display: flex;
+      flex-direction: row;
+
+      button {
+        margin: 8px;
+      }
+
+      mat-chip {
+        margin: 12px;
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+      }
+    }
+  }
+  
+}
