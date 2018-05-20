@@ -12,7 +12,7 @@ AS
 
 	SELECT F.*
 	FROM [dbo].[forum_Folders] F
-	WHERE ParentId = @lookupForumId AND [IsDeleted] != 1  AND CourseId = @courseId
+	WHERE ParentId = @lookupForumId AND [IsDeleted] != 1
 
 	SELECT T.*
 	FROM [dbo].[forum_Topics] T

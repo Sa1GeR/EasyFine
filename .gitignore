@@ -46,3 +46,13 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+src/Apps/Forum/PrivateForum.Apps.Api/node_modules/
+src/PrivateForum.Database/obj/
+src/PrivateForum.Core/bin/
+src/Apps/Forum/PrivateForum.Apps.Api/obj/
+src/Apps/Forum/PrivateForum.Apps.Services/bin/
+src/Apps/Forum/PrivateForum.Apps.Services/obj/
+packages/
+src/Apps/Forum/PrivateForum.Apps.Api/wwwroot/
+src/PrivateForum.Database/bin/
+src/PrivateForum.Core/obj/

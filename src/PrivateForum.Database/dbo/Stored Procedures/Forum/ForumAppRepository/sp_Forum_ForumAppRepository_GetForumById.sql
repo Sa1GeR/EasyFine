@@ -2,16 +2,14 @@
 	@forumId			INT,
 	@userId             INT
 AS
-    DECLARE @courseId INT;
-    SELECT @courseId = U.CourseId FROM dbo.identity_Users U WHERE u.id = @userId;
 
 	SELECT F.*
 	FROM [dbo].[forum_Folders] F
-	WHERE Id = @forumId AND [IsDeleted] != 1 AND CourseId = @courseId
+	WHERE Id = @forumId AND [IsDeleted] != 1
 
 	SELECT F.*
 	FROM [dbo].[forum_Folders] F
-	WHERE ParentId = @forumId AND [IsDeleted] != 1 AND CourseId = @courseId
+	WHERE ParentId = @forumId AND [IsDeleted] != 1
 
 	SELECT T.*
 	FROM [dbo].[forum_Topics] T

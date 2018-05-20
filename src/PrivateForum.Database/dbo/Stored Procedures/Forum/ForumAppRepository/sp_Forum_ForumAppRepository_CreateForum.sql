@@ -7,13 +7,9 @@
 	@CreatedBy			NVARCHAR(50),
 	@ModifiedBy			NVARCHAR(50)	
 AS
-    DECLARE @courseId INT;
-    SELECT @courseId = U.CourseId FROM dbo.identity_users U WHERE u.id = @userId;
-	
 	INSERT INTO [dbo].[forum_Folders]
            ([ParentId]
            ,[Name]
-		   ,[CourseId]
            ,[Created]
            ,[Modified]
            ,[CreatedBy]
@@ -21,7 +17,6 @@ AS
      VALUES
            (@parentId
            ,@name
-		   ,@courseId
            ,@Created
            ,@Modified
            ,@CreatedBy

@@ -49,7 +49,7 @@ namespace PrivateForum.App.Web
             services.AddOptions();
             services.Configure<DbConfiguration>(Configuration.GetSection("DatabaseConfiguration"));
 
-            //services.ConfigureForumAuthorization();
+            services.ConfigureForumAuthorization();
             services.AddMvc();
 
             services.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
@@ -83,7 +83,7 @@ namespace PrivateForum.App.Web
 
             app.UseAuthentication();
 
-            app.UseAppProtectionMiddleware();
+            //app.UseAppProtectionMiddleware();
 
             app.UseMvc();
 

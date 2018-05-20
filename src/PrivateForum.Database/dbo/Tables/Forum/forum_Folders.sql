@@ -2,7 +2,6 @@
 (
 	[Id]                         INT             NOT NULL IDENTITY(1,1),
 	[IsDeleted]                  BIT             NOT NULL DEFAULT 0,
-	[CourseId]                   INT             NOT NULL,
     [ParentId]                   INT			 NULL,
 	[Name]                       NVARCHAR (MAX)  NOT NULL,
 	[Created]                    DATETIME2 (7)   NOT NULL,

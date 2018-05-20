@@ -8,6 +8,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.Extensions.Options;
 using PrivateForum.Core.Utilities;
+using PrivateForum.Apps.Services.Models.Identity;
+using Microsoft.AspNetCore.Identity;
+using PrivateForum.Apps.Services.Repository.Implementation.Identity;
 
 namespace PrivateForum.App.Web.Configuration.Security
 {
@@ -15,37 +18,22 @@ namespace PrivateForum.App.Web.Configuration.Security
     {
         public static IServiceCollection ConfigureForumAuthorization(this IServiceCollection services)
         {
-            OidcConfiguration configuration = services.Resolve<IOptions<OidcConfiguration>>()?.Value;
-            if (configuration == null)
-                throw new ArgumentException("Oidc configuration");
+            services
+                .AddIdentity<User, Role>();
+
+            services.AddTransient<IUserStore<User>, UserStore>();
+            services.AddTransient<IRoleStore<Role>, RoleStore>();
 
             services
                 .AddAuthorization(options =>
                 {
-                    options.AddPolicy("AppProtectionPolicy", policy => policy.RequireClaim("name"));
+                    //options.AddPolicy("AppProtectionPolicy", policy => policy.RequireClaim("name"));
                 })
                 .AddAuthentication(options =>
                 {
                     options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                     options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
-                })
-                .AddOpenIdConnect(options =>
-                {
-                    options.Authority = configuration.Authority;
-
-                    options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    options.SignOutScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    options.RequireHttpsMetadata = false;
-
-                    options.ClientId = configuration.ClientId;
-                    options.ClientSecret = configuration.ClientSecret;
-                    options.ResponseType = configuration.ResponseType;
-                    options.SignedOutRedirectUri = configuration.PostLogoutRedirectUri;
-
-                    options.GetClaimsFromUserInfoEndpoint = true;
-                    options.SaveTokens = true;
-                    options.Scope.AddRange(new string[] { "profile", "ed-forum-api" });
+                    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 })
                 .AddCookie();
 

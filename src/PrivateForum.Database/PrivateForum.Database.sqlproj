@@ -76,7 +76,8 @@
     <Folder Include="dbo\Stored Procedures\Forum\TopicAppRepository" />
     <Folder Include="dbo\Stored Procedures\Forum\MessageAppRepository" />
     <Folder Include="dbo\PostDeploymentScripts\" />
-    <Folder Include="dbo\Stored Procedures\Workers\" />
+    <Folder Include="dbo\Stored Procedures\Security" />
+    <Folder Include="dbo\Stored Procedures\Security\UserStore" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\identity_UserClaims.sql" />
@@ -87,7 +88,6 @@
     <Build Include="dbo\DataTableType\int_table_type.sql" />
     <Build Include="dbo\DataTableType\string_table_type.sql" />
     <Build Include="dbo\DataTableType\uuid_table_type.sql" />
-    <Build Include="dbo\Stored Procedures\Workers\sp_Workers_ChatAppRepository_GetUndeletedExamCompletedUsersAsync.sql" />
     <None Include="dbo\PostDeploymentScripts\ViewConfig\PopulateViewConfigDataForAllExamHomes.sql" />
     <None Include="dbo\PostDeploymentScripts\ViewConfig\PopulateViewConfigDataForAllCourses.sql" />
     <Build Include="dbo\Tables\Forum\forum_UserProfiles.sql" />
@@ -111,6 +111,15 @@
     <Build Include="dbo\Stored Procedures\Forum\UserAppRepository\sp_Forum_UsersAppRepository_UploadAvatar.sql" />
     <Build Include="dbo\Stored Procedures\Forum\TopicAppRepository\sp_Forum_TopicAppRepository_UpdateTopicHeadId.sql" />
     <Build Include="dbo\Stored Procedures\Forum\ForumAppRepository\sp_Forum_ForumAppRepository_GetRootForum.sql" />
+    <Build Include="dbo\Stored Procedures\Security\UserStore\sp_Security_UserStore_AddToRoleAsync.sql" />
+    <Build Include="dbo\Stored Procedures\Security\UserStore\sp_Security_UserStore_CreateAsync.sql" />
+    <Build Include="dbo\Stored Procedures\Security\UserStore\sp_Security_UserStore_DeleteAsync.sql" />
+    <Build Include="dbo\Stored Procedures\Security\UserStore\sp_Security_UserStore_FindByIdAsync.sql" />
+    <Build Include="dbo\Stored Procedures\Security\UserStore\sp_Security_UserStore_FindByNameAsync.sql" />
+    <Build Include="dbo\Stored Procedures\Security\UserStore\sp_Security_UserStore_RemoveFromRoleAsync.sql" />
+    <Build Include="dbo\Stored Procedures\Security\UserStore\sp_Security_UserStore_UpdateAsync.sql" />
+    <Build Include="dbo\Stored Procedures\Security\UserStore\sp_Security_UserStore_GetUsersInRole.sql" />
+    <Build Include="dbo\Stored Procedures\Security\UserStore\sp_Security_UserStore_FindByEmailAsync.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Ed.Database.refactorlog" />
