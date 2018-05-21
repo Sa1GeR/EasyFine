@@ -1,0 +1,31 @@
+<mat-tab-group>
+    <mat-tab label="Login">
+        <mat-card>
+            <mat-card-content>
+                Login
+                <input matInput placeholder="Login" [(ngModel)]="loginmodel.login" required>
+                <input matInput placeholder="Password" [(ngModel)]="loginmodel.password" required>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="accent" (click)="login()">Login</button>
+            </mat-card-actions>
+        </mat-card>
+    </mat-tab>
+    <mat-tab label="Register">
+        <mat-card>
+            <mat-card-content>
+                Register
+                <input matInput placeholder="First Name" [(ngModel)]="registermodel.firstName" required>
+                <input matInput placeholder="Middle Name" [(ngModel)]="registermodel.middleName" required>
+                <input matInput placeholder="Last Name" [(ngModel)]="registermodel.lastName" required>
+                <input matInput placeholder="Email" [(ngModel)]="registermodel.email" required>
+                <input matInput placeholder="Password" [(ngModel)]="registermodel.password" required>
+                <input matInput placeholder="Repeat Password" [(ngModel)]="registermodel.repeatPassword" required>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="accent" (click)="register()">Register</button>
+            </mat-card-actions>
+        </mat-card>
+    </mat-tab>
+</mat-tab-group>
+
