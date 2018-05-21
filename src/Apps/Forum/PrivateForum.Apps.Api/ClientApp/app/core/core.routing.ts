@@ -4,12 +4,14 @@ import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ForumComponent } from './forum/forum.component';
 import { ForumResolver } from './forum/forum.resolver';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: 'profile/:id', component: ProfileComponent },
   { path: 'forum/:id', component: ForumComponent, resolve: { forumData: ForumResolver}, runGuardsAndResolvers: 'always' },
   { path: 'forum', component: ForumComponent, resolve: { forumData: ForumResolver }, runGuardsAndResolvers: 'always' },
   { path: 'not-found', component: NotFoundComponent },
+  { path: 'auth', component: LoginComponent },
   { path: '**', redirectTo: '/forum' }
 ];
 

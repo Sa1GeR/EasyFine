@@ -56,6 +56,7 @@ namespace PrivateForum.App.Web
 
             var builder = new ContainerBuilder();
             builder.Populate(services);
+            builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>();
             builder.RegisterType<AuditContext>().As<IAuditContext>();
             builder.RegisterType<CommandConnection>().As<IConnectionFactory>();
             builder.Register<IDomainRepositoryFactory>(c => new DomainRepositoryFactory(this.ApplicationContainer));

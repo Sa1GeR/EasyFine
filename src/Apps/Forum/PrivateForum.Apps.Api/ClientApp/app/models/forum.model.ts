@@ -9,6 +9,8 @@ export class ForumModel {
   public topics: TopicModel[];
   public subForums: ForumModel[];
 
+  public deWay: ForumModel[];
+
   public created?: string;
   public createdBy?: string;
   public modified?: string;

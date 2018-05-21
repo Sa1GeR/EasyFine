@@ -6,5 +6,6 @@ namespace PrivateForum.App.Web.Services.Models.Forum
     {
         public IEnumerable<BaseForumVM> SubForums { get; set; }
         public IEnumerable<ForumTopicVM> Topics { get; set; }
+        public IEnumerable<BaseForumVM> DeWay { get; set; }
     }
 }

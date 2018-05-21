@@ -15,7 +15,7 @@ export class LoginService {
   }
 
   public logout() : Observable<any> {
-    return this.http.post('api/message/edit', message);
+    return this.http.post('api/accounts/logout', {});
   }
 
   public register(registerModel: RegisterModel) {

@@ -23,8 +23,8 @@ namespace PrivateForum.App.Web.Controllers
         [HttpGet("me")]
         public async Task<IActionResult> GetCurrentUser()
         {
-            if (!(HttpContext?.User?.Identity?.IsAuthenticated ?? false))
-                return Unauthorized();
+            // if (!(HttpContext?.User?.Identity?.IsAuthenticated ?? false))
+            //     return Unauthorized();
 
             var result = await _userService.GetCurrentUserAsync();
 

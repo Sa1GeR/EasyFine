@@ -85,7 +85,7 @@ export class UpsertTopicDialogComponent implements OnInit {
     }
 
     private setSuccessNotification(dialog: MatDialogRef<UpsertTopicDialogComponent>) { 
-        dialog.afterClosed().subscribe(() => { this.snackBar.open(this.successNotification, null, { duration: 2000 }); this.data.cb(); });
+        dialog.afterClosed().subscribe(() => { this.snackBar.open(this.successNotification, null, { duration: 2000 }); });
     }
 
     private setFailedNotification(dialog: MatDialogRef<UpsertTopicDialogComponent>) { 

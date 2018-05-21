@@ -41,7 +41,7 @@ namespace PrivateForum.App.Web.Services.Repository.Implementation
                 UserId = userId
             };
             
-            using (var reader = await connection.QueryMultipleAsync("sp_Admin_UsersAppRepository_GetCurrentAdminAsync", param: parameters, commandType: CommandType.StoredProcedure))
+            using (var reader = await connection.QueryMultipleAsync("sp_Security_UserStore_FindByIdAsync", param: parameters, commandType: CommandType.StoredProcedure))
             {
                     CurentUserVM currentUser = await reader.ReadSingleAsync<CurentUserVM>();
                     currentUser.Roles = await reader.ReadAsync<RoleVM>();

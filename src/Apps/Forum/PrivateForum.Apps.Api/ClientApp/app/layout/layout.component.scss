@@ -1,5 +1,10 @@
 .content-wrapper {
-  padding-top: 80px;
-  height: calc(100% - 80px);
+  @media screen and (max-width: 600px) {
+    padding-top: 56px;
+    height: calc(100% - 56px);
+  }
+
+  padding-top: 64px;
+  height: calc(100% - 64px);
   width: 100%;
 }

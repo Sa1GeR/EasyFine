@@ -3,8 +3,8 @@
         <mat-card>
             <mat-card-content>
                 Login
-                <input matInput placeholder="Login" [(ngModel)]="loginmodel.login" required>
-                <input matInput placeholder="Password" [(ngModel)]="loginmodel.password" required>
+                <input matInput placeholder="Login" [(ngModel)]="loginModel.email" required>
+                <input matInput placeholder="Password" [(ngModel)]="loginModel.password" required>
             </mat-card-content>
             <mat-card-actions>
                 <button mat-raised-button color="accent" (click)="login()">Login</button>
@@ -15,12 +15,11 @@
         <mat-card>
             <mat-card-content>
                 Register
-                <input matInput placeholder="First Name" [(ngModel)]="registermodel.firstName" required>
-                <input matInput placeholder="Middle Name" [(ngModel)]="registermodel.middleName" required>
-                <input matInput placeholder="Last Name" [(ngModel)]="registermodel.lastName" required>
-                <input matInput placeholder="Email" [(ngModel)]="registermodel.email" required>
-                <input matInput placeholder="Password" [(ngModel)]="registermodel.password" required>
-                <input matInput placeholder="Repeat Password" [(ngModel)]="registermodel.repeatPassword" required>
+                <input matInput placeholder="First Name" [(ngModel)]="registerModel.firstName" required>
+                <input matInput placeholder="Last Name" [(ngModel)]="registerModel.lastName" required>
+                <input matInput placeholder="Email" [(ngModel)]="registerModel.email" required>
+                <input matInput placeholder="Password" [(ngModel)]="registerModel.password" required>
+                <input matInput placeholder="Repeat Password" [(ngModel)]="registerModel.repeatPassword" required>
             </mat-card-content>
             <mat-card-actions>
                 <button mat-raised-button color="accent" (click)="register()">Register</button>

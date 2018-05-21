@@ -1,36 +1,40 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import 'rxjs/add/operator/switchMap';
+import "rxjs/add/operator/switchMap";
 
 import { LoginService } from "../../services";
-import { LoginModel } from "../../models";
+import { LoginModel, RegisterModel } from "../../models";
+import { MatSnackBar } from "@angular/material";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.scss"]
 })
-export class LoginComponent implements OnInit{
-  constructor(public loginService: LoginService, public route: ActivatedRoute) { }
+export class LoginComponent {
+  constructor(
+    public loginService: LoginService,
+    public route: ActivatedRoute,
+    public snackBar: MatSnackBar
+  ) {}
 
-  loginModel: LoginModel;
-  registerModel: RegisterModel;
+  loginModel: LoginModel = new LoginModel();
+  registerModel: RegisterModel = new RegisterModel();
 
   actionInProgress = false;
 
- 
   login() {
     this.actionInProgress = true;
     this.loginService.login(this.loginModel).subscribe(
       () => {
         this.actionInProgress = false;
-        this.snackBar.open('Logged in.', null, {
+        this.snackBar.open("Logged in.", null, {
           duration: 2000
         });
-      }, 
+      },
       err => {
         this.actionInProgress = false;
-        this.snackBar.open('Error trying to login.', null, {
+        this.snackBar.open("Error trying to login.", null, {
           duration: 2000
         });
       }
@@ -39,33 +43,34 @@ export class LoginComponent implements OnInit{
 
   logout() {
     this.actionInProgress = true;
-    this.loginService.logour().subscribe(
+    this.loginService.logout().subscribe(
       () => {
         this.actionInProgress = false;
-        this.snackBar.open('Logged out.', null, {
+        this.snackBar.open("Logged out.", null, {
           duration: 2000
         });
-      }, 
+      },
       err => {
         this.actionInProgress = false;
-        this.snackBar.open('Error trying to log out.', null, {
+        this.snackBar.open("Error trying to log out.", null, {
           duration: 2000
         });
       }
     );
   }
-register() {
+
+  register() {
     this.actionInProgress = true;
     this.loginService.register(this.registerModel).subscribe(
       () => {
         this.actionInProgress = false;
-        this.snackBar.open('Registered.', null, {
+        this.snackBar.open("Registered.", null, {
           duration: 2000
         });
-      }, 
+      },
       err => {
         this.actionInProgress = false;
-        this.snackBar.open('Error trying to register.', null, {
+        this.snackBar.open("Error trying to register.", null, {
           duration: 2000
         });
       }

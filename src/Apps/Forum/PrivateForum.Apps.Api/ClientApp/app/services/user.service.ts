@@ -22,7 +22,8 @@ export class UserService {
   private request: Observable<UserModel>;
 
   public getCurrentUser(): Observable<UserModel> {
-    return this.currentUser ? of(this.currentUser) : this.request;
+    return of({id: 1, role: ""});
+    //return this.currentUser ? of(this.currentUser) : this.request;
   }
 
   public getProfile(id: string): Observable<ProfileModel> {

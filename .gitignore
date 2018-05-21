@@ -7,10 +7,11 @@
 /out-tsc
 
 # dependencies
-EasyFine/ClientApp/node_modules
+**/node_modules
 EasyFine/wwwroot
 EasyFine/obj
 EasyFine/bin
+packages
 
 # IDEs and editors
 /.idea
@@ -49,6 +50,7 @@ Thumbs.db
 src/Apps/Forum/PrivateForum.Apps.Api/node_modules/
 src/PrivateForum.Database/obj/
 src/PrivateForum.Core/bin/
+src/Apps/Forum/PrivateForum.Apps.Api/bin/
 src/Apps/Forum/PrivateForum.Apps.Api/obj/
 src/Apps/Forum/PrivateForum.Apps.Services/bin/
 src/Apps/Forum/PrivateForum.Apps.Services/obj/
@@ -56,3 +58,32 @@ packages/
 src/Apps/Forum/PrivateForum.Apps.Api/wwwroot/
 src/PrivateForum.Database/bin/
 src/PrivateForum.Core/obj/
+
+src/PrivateForum.Database/*.dbmdl
+src/PrivateForum.Database/*.jfm
+src/PrivateForum.Database/*.sqlproj.user
+
+.DS_Store
+
+*.jfm
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/

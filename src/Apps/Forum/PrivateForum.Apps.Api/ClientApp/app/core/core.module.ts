@@ -12,11 +12,12 @@ import { ProfileComponent } from "./profile/profile.component";
 import { UpsertForumDialogComponent } from "./dialogs/upsert-forum/upsert-forum.dialog.component";
 
 import { ForumResolver } from "./forum/forum.resolver";
-import { ForumService } from "../services";
+import { ForumService, LoginService } from "../services";
 import { TopicService } from "../services/topic.service";
 import { UpsertTopicDialogComponent } from "./dialogs/upsert-topic/upsert-topic.dialog.component";
 import { MessageService } from "../services/message.service";
 import { SafePipe } from "./forum/topic/safe.pipe";
+import { LoginComponent } from "./login/login.component";
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { SafePipe } from "./forum/topic/safe.pipe";
     NotFoundComponent,
     ForumComponent,
     TopicComponent,
+    LoginComponent,
     UpsertForumDialogComponent,
     UpsertTopicDialogComponent,
     SafePipe
@@ -42,7 +44,8 @@ import { SafePipe } from "./forum/topic/safe.pipe";
     ForumService,
     ForumResolver,
     TopicService,
-    MessageService
+    MessageService,
+    LoginService
   ]
 })
 export class CoreModule { }

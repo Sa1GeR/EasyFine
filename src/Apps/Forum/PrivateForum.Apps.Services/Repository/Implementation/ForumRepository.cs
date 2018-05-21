@@ -41,8 +41,24 @@ namespace PrivateForum.App.Web.Services.Repository.Implementation
             var reader =  await connection.QueryMultipleAsync("sp_Forum_ForumAppRepository_GetForumById", param: parameters, commandType: CommandType.StoredProcedure);
 
             var result = await reader.ReadFirstOrDefaultAsync<ForumVM>();
-            result.SubForums = await reader.ReadAsync<BaseForumVM>();
-            result.Topics = await reader.ReadAsync<ForumTopicVM>();
+
+            try
+            {
+                result.SubForums = await reader.ReadAsync<BaseForumVM>();
+            }
+            catch { }
+
+            try
+            {
+                result.Topics = await reader.ReadAsync<ForumTopicVM>();
+            }
+            catch { }
+
+            try
+            {
+                result.DeWay = await reader.ReadAsync<BaseForumVM>();
+            }
+            catch { }
 
             return result;
         }
@@ -53,8 +69,17 @@ namespace PrivateForum.App.Web.Services.Repository.Implementation
             var reader = await connection.QueryMultipleAsync("sp_Forum_ForumAppRepository_GetRootForum", param: parameters, commandType: CommandType.StoredProcedure);
 
             var result = await reader.ReadFirstOrDefaultAsync<ForumVM>();
-            result.SubForums = await reader.ReadAsync<BaseForumVM>();
-            result.Topics = await reader.ReadAsync<ForumTopicVM>();
+            try
+            {
+                result.SubForums = await reader.ReadAsync<BaseForumVM>();
+            }
+            catch { }
+            
+            try
+            {
+                result.Topics = await reader.ReadAsync<ForumTopicVM>();
+            }
+            catch { }
 
             return result;
         }

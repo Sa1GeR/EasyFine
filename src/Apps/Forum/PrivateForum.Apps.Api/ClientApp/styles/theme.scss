@@ -1,35 +1,10 @@
 $forum-base-colors: (
-  50: rgb(3, 139, 225),
-  100: rgb(3, 139, 225),
-  200: rgb(3, 139, 225),
-  300: rgb(3, 139, 225),
-  400: rgb(3, 139, 225),
-  500: rgb(3, 139, 225),
-  600: rgb(3, 139, 225),
-  700: rgb(3, 139, 225),
-  800: rgb(3, 139, 225),
-  900: rgb(3, 139, 225),
-  A100: rgb(3, 139, 225),
-  A200: rgb(3, 139, 225),
-  A400: rgb(3, 139, 225),
-  A700: rgb(3, 139, 225)
-);
-
-$forum-accent-colors: (
-  50: #b0bec5,
-  100: #b0bec5,
-  200: #b0bec5,
-  300: #b0bec5,
-  400: #b0bec5,
-  500: #b0bec5,
-  600: #b0bec5,
-  700: #b0bec5,
-  800: #b0bec5,
-  900: #b0bec5,
-  A100: #b0bec5,
-  A200: #b0bec5,
-  A400: #b0bec5,
-  A700: #b0bec5
+  100: #666ad1,
+  500: #303f9f,
+  700: #001970,
+  A100: #a7c0cd,
+  A200: #78909c,
+  A700: #4b636e
 );
 
 $forum-contrast: (
@@ -106,7 +81,7 @@ $forum-background: (
 @include mat-core();
 
 $forum-base-palette: map-merge($forum-base-colors,  (contrast: $forum-contrast));
-$forum-accent-palette: map-merge($forum-accent-colors,  (contrast: $forum-contrast));
+$forum-accent-palette: map-merge($forum-base-colors,  (contrast: $forum-contrast));
 
 // general colors
 $forum-primary: mat-palette($forum-base-palette);

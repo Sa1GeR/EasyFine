@@ -1,14 +1,15 @@
 <div class="forum-wrapper">
   <div class="forum-container">
     <mat-toolbar>
-      {{forum?.name}}
+      <div *ngFor="let way of forum.deWay"><mat-icon mat-list-icon color="white">chevron_right</mat-icon><span (click)="openForum(way.id)">{{way.name}}</span></div>
+      <div><mat-icon mat-list-icon color="white">chevron_right</mat-icon><span>{{forum?.name}}</span></div>
     </mat-toolbar>
     <mat-list>
       <h3 mat-subheader>
         <span>Subforums</span>
         <span class="filler"></span>
         <button mat-icon-button>
-          <mat-icon mat-list-icon color="primary" (click)="createNewForum()">add_circle</mat-icon>
+          <mat-icon mat-list-icon color="primary" (click)="createNewForum() ">add_circle</mat-icon>
         </button>
       </h3>
       <ng-container *ngIf="forum.subForums.length > 0">
@@ -36,7 +37,7 @@
     </mat-list>
   </div>
 
-  <div class="topic-container" [ngStyle]="{'width': topicId ? '50%' : '0'}" [ngClass]="{'opened': topicId}">
+  <div class="topic-container" [class.opened]="topicId">
     <app-topic *ngIf="topicId" [topicId]="topicId" (close)="closeTopic()"></app-topic>
   </div>
 </div>

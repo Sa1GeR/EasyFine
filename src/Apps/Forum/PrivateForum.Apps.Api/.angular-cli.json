@@ -19,6 +19,11 @@
         "styles.scss",
         "../node_modules/font-awesome/css/font-awesome.min.css"
       ],
+      "stylePreprocessorOptions": {
+        "includePaths": [
+          "styles/"
+        ]
+      },
       "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {

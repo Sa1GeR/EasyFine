@@ -19,15 +19,14 @@ export class ForumComponent implements OnInit {
   constructor(public route: ActivatedRoute, public router: Router, public dialog: MatDialog, public userService: UserService, public forumService: ForumService) { }
   
   ngOnInit() {
-
     merge(
       this.route.data.map(data => data['forumData']),
       this.forumService.activeForum
     )
     .subscribe(forum => {
-      this.forum = forum
+      this.forum = forum; 
+      this.forum.deWay.reverse();
     });
-    
   }
 
   openTopic(id: number) {
