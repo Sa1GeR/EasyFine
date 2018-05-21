@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
 import "rxjs/add/operator/switchMap";
 
 import { LoginService } from "../../services";
 import { LoginModel, RegisterModel } from "../../models";
 import { MatSnackBar } from "@angular/material";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-login",
@@ -13,8 +13,8 @@ import { MatSnackBar } from "@angular/material";
 })
 export class LoginComponent {
   constructor(
-    public loginService: LoginService,
-    public route: ActivatedRoute,
+      public loginService: LoginService,
+      public route: Router,
     public snackBar: MatSnackBar
   ) {}
 
@@ -30,7 +30,8 @@ export class LoginComponent {
         this.actionInProgress = false;
         this.snackBar.open("Logged in.", null, {
           duration: 2000
-        });
+          });
+          this.route.navigateByUrl("/forum");
       },
       err => {
         this.actionInProgress = false;
@@ -66,7 +67,9 @@ export class LoginComponent {
         this.actionInProgress = false;
         this.snackBar.open("Registered.", null, {
           duration: 2000
-        });
+          });
+          this.route.navigateByUrl("/forum");
+
       },
       err => {
         this.actionInProgress = false;
