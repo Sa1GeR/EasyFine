@@ -54,8 +54,11 @@ namespace PrivateForum.Apps.Api.Controllers
             var result = await _userManager.CreateAsync(register.ToDomain(), register.Password);
 
             if (result.Succeeded)
-                return Ok();
-
+            {
+                var lookup = await _signInManager.UserManager.FindByEmailAsync(register.Email);
+                var signInResult = await _signInManager.PasswordSignInAsync(lookup, register.Password, false, lockoutOnFailure: false);
+                return Ok(GenerateJwtToken(register.Email, lookup));
+            }
             return BadRequest(result.Errors);
         }
 
