@@ -6,9 +6,11 @@ using System.IO;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PrivateForum.App.Web.Controllers
 {
+    [Authorize]
     [Produces("application/json")]
     [Route("api/user")]
     public class UserController : Controller
@@ -20,6 +22,7 @@ namespace PrivateForum.App.Web.Controllers
             _userService = userService;
         }
 
+        [Authorize]
         [HttpGet("me")]
         public async Task<IActionResult> GetCurrentUser()
         {
