@@ -1,3 +1,15 @@
 <mat-toolbar color="primary">
-  Private Forum
+  <span>Private Forum</span>
+  <span class="filler"></span>
+  <div class="user-info" *ngIf="isLoggedIn" (click)="openProfile()">
+    <div class="avatar" [style.background-image.url]="profile?.avatarUrl"></div>
+    <div class="name-container">
+      <p class="name">{{profile.firstName}} {{profile.middleName}} {{profile.lastName}}</p>
+      <p class="email">{{profile.email}}</p>
+    </div>
+  </div>
+  <div *ngIf="!isLoggedIn" routerLink="/auth">
+    Log In
+  </div>
+
 </mat-toolbar>

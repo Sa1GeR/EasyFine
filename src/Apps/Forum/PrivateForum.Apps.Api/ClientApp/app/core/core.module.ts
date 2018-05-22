@@ -18,6 +18,8 @@ import { UpsertTopicDialogComponent } from "./dialogs/upsert-topic/upsert-topic.
 import { MessageService } from "../services/message.service";
 import { SafePipe } from "./forum/topic/safe.pipe";
 import { LoginComponent } from "./login/login.component";
+import { TokenInterceptor } from "../services/token.interceptor";
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
 
 
 @NgModule({
@@ -44,8 +46,7 @@ import { LoginComponent } from "./login/login.component";
     ForumService,
     ForumResolver,
     TopicService,
-    MessageService,
-    LoginService
+    MessageService
   ]
 })
 export class CoreModule { }
