@@ -18,12 +18,21 @@ export class UserService {
     });
   }
 
+  public retryUser() {
+    this.request = this.http
+      .get<UserModel>("api/user/me")
+      .share();
+
+    this.request.subscribe(user => {
+      this.currentUser = user;
+    });
+  }
+
   private currentUser: UserModel;
   private request: Observable<UserModel>;
 
   public getCurrentUser(): Observable<UserModel> {
-    return of({id: 1, role: ""});
-    //return this.currentUser ? of(this.currentUser) : this.request;
+    return this.currentUser ? of(this.currentUser) : this.request;
   }
 
   public getProfile(id: string): Observable<ProfileModel> {

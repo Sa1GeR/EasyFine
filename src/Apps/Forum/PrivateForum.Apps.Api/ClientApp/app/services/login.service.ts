@@ -5,22 +5,40 @@ import { of } from "rxjs/observable/of";
 import "rxjs/add/operator/share";
 
 import { LoginModel, RegisterModel} from "../models";
+import { UserService } from "./user.service";
+import { BehaviorSubject } from "rxjs/BehaviorSubject";
 
 @Injectable()
 export class LoginService {
-  constructor(public http: HttpClient) { }
+  public isLoggedIn: BehaviorSubject<boolean>;
+
+  constructor(public http: HttpClient, public userService: UserService) { 
+    this.isLoggedIn = new BehaviorSubject(!!this.getToken());
+  }
+
 
   public login(loginModel: LoginModel) : Observable<any> {
-    return this.http.post<string>('api/accounts/login', loginModel).map(res => this.writeToken(res));
+    return this.http.post<string>('api/accounts/login', loginModel).map(res => { 
+      this.writeToken(res);
+      this.isLoggedIn.next(true);
+      this.userService.retryUser();
+    });
   }
 
   public logout() : Observable<any> {
-    localStorage.removeItem('token');
-    return this.http.post('api/accounts/logout', {});
+    return this.http.post('api/accounts/logout', {}).map(res => {
+      localStorage.removeItem('token');
+      this.isLoggedIn.next(false);
+      return res;
+    });
   }
 
   public register(registerModel: RegisterModel) {
-    return this.http.post('api/accounts/register', registerModel);
+    return this.http.post<string>('api/accounts/register', registerModel).map(res => { 
+      this.writeToken(res);
+      this.isLoggedIn.next(true);
+      this.userService.retryUser();
+    });
   }
 
   public writeToken(token: string): string {

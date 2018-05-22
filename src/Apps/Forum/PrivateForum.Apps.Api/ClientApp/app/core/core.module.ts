@@ -46,13 +46,7 @@ import { HTTP_INTERCEPTORS } from "@angular/common/http";
     ForumService,
     ForumResolver,
     TopicService,
-    MessageService,
-    LoginService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    }
+    MessageService
   ]
 })
 export class CoreModule { }
