@@ -1,10 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import 'rxjs/add/operator/switchMap';
 
 import { UserService } from "../../services";
 import { ProfileModel } from "../../models";
-import { MatSnackBar } from "@angular/material";
+import { MatSnackBar, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 
 @Component({
   selector: 'app-profile',
@@ -12,17 +12,23 @@ import { MatSnackBar } from "@angular/material";
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit{
-  constructor(public userService: UserService, public route: ActivatedRoute, public snackBar: MatSnackBar) { }
+    constructor(public userService: UserService,
+        public route: ActivatedRoute,
+        public snackBar: MatSnackBar,
+        public dialogRef: MatDialogRef<ProfileComponent>,
+        @Inject(MAT_DIALOG_DATA) public data: any
+    ) {
+        this.userId = data.userId;
+        console.log(data);
+    }
 
+    userId: any;
   profile: ProfileModel;
 
   actionInProgress = false;
 
   ngOnInit() {
-    this.route.paramMap.switchMap(paramMap => {
-      let id = paramMap.get('id');
-      return this.userService.getProfile(id);
-    }).subscribe(profile => this.profile = profile);
+      this.userService.getProfile(this.userId).subscribe(profile => this.profile = profile);
   }
 
   blockUser() {

@@ -5,6 +5,8 @@ import { TopicModel, MessageModel } from "../../../models";
 import { Observable } from "rxjs/Observable";
 import { MessageService } from "../../../services/message.service";
 import { UserService } from "../../../services";
+import { ProfileComponent } from "../../profile/profile.component";
+import { MatDialog } from "@angular/material";
 
 
 export const EDITOR_CONFIG = {
@@ -43,7 +45,7 @@ export class TopicComponent implements OnChanges {
 
   activeMessage = new MessageModel();
 
-  constructor(public topicService: TopicService, public route: ActivatedRoute, public messageService: MessageService, public userService: UserService) {}
+    constructor(public topicService: TopicService, public dialog: MatDialog, public route: ActivatedRoute, public messageService: MessageService, public userService: UserService) {}
 
   ngOnChanges(changes: SimpleChanges) {
     let change = changes['topicId'];
@@ -87,5 +89,20 @@ export class TopicComponent implements OnChanges {
 
   closeTopic() {
     this.close.emit();
-  }
+    }
+
+
+    openUserProfile(userId: number) {
+        this.openUserProfileWindow({ userId: userId });
+    }
+    
+
+    private openUserProfileWindow(data) {
+        this.dialog.open(ProfileComponent, {
+            width: '450px',
+            data: data
+        });
+    }
+
+
 }

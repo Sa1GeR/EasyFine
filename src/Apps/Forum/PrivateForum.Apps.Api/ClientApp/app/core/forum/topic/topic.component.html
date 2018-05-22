@@ -19,7 +19,7 @@
   <div class="messages-container">
     <mat-card *ngFor="let message of topic.messages" [id]="message.id">
       <mat-card-header>
-        <div mat-card-avatar class="avatar" [style.background-image.url]="message.avatarUrl"></div>
+        <div mat-card-avatar class="avatar" [style.background-image.url]="message.avatarUrl" (click)="openUserProfile(message.authorId)"></div>
         <mat-card-title>{{message.firstName}} {{message.lastName}}</mat-card-title>
         <mat-card-subtitle>
           {{message.modified | date}}

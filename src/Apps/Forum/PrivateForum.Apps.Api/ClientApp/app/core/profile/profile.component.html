@@ -1,11 +1,13 @@
-<mat-card *ngIf="profile">
-  <mat-card-content>
-    <div class="avatar" [style.background-image.url]="profile?.avatarUrl"></div>
-    <p class="name">{{profile.firstName}} {{profile.middleName}} {{profile.lastName}}</p>
-    {{profile.email}}
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button color="accent" (click)="blockUser()" [disabled]="actionInProgress">Block</button>
-    <button mat-raised-button color="warn" (click)="deleteUser()" [disabled]="actionInProgress">Delete</button>
-  </mat-card-actions>
-</mat-card>
+<h1 mat-dialog-title>
+    User Profile
+</h1>
+<div mat-dialog-content>
+    <mat-card>
+        <mat-card-content>
+            <div class="avatar" [style.background-image.url]="profile?.avatarUrl"></div>
+            <p class="name">{{profile.firstName}} {{profile.middleName}} {{profile.lastName}}</p>
+            {{profile.email}}
+        </mat-card-content>
+    </mat-card>
+    
+</div>
