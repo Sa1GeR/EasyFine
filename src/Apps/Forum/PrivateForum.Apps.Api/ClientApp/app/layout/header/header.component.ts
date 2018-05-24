@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { UserService, LoginService } from "../../services";
 import { UserModel } from "../../models";
 
@@ -7,13 +7,16 @@ import { UserModel } from "../../models";
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
-
+export class HeaderComponent implements OnInit{
   isLoggedIn: boolean;
   user: UserModel;
   profile: any;
 
   constructor(public userService: UserService, public loginService: LoginService) {
+    
+  }
+
+  ngOnInit(): void {
     this.loginService.isLoggedIn.subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
       if (this.isLoggedIn) {
@@ -23,7 +26,6 @@ export class HeaderComponent {
         });
       }
     });
-    
   }
 
   openProfile() {

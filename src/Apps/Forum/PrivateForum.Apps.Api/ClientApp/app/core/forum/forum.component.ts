@@ -25,7 +25,8 @@ export class ForumComponent implements OnInit {
     )
     .subscribe(forum => {
       this.forum = forum; 
-      this.forum.deWay.reverse();
+      if (this.forum.deWay)
+        this.forum.deWay.reverse();
     });
   }
 
