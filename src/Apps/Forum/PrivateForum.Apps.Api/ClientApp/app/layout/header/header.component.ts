@@ -3,6 +3,7 @@ import { UserService, LoginService } from "../../services";
 import { UserModel } from "../../models";
 import { Router } from "@angular/router";
 import { ProfileComponent } from "../../core/profile/profile.component";
+import { MatDialog } from "@angular/material";
 
 @Component({
   selector: "app-header",
@@ -17,14 +18,15 @@ export class HeaderComponent implements OnInit {
   constructor(
     public userService: UserService,
     public loginService: LoginService,
-    public router: Router
+    public router: Router,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
     this.loginService.isLoggedIn.subscribe(isLoggedIn => {
-      this.isLoggedIn = isLoggedIn;
-      if (this.isLoggedIn) {
+      if (isLoggedIn) {
         this.userService.getCurrentUser().subscribe(user => {
+          this.isLoggedIn = isLoggedIn;
           this.user = user;
           this.userService
             .getProfile(user.id.toString())
@@ -34,15 +36,16 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  logout() {
-    localStorage.removeItem("token");
-    this.router.navigateByUrl("/auth");
+  openProfile() {
+    this.dialog.open(ProfileComponent, {
+      width: '450px',
+      data: { userId: this.user.id }
+  });
   }
 
-  openProfile() {
-      this.dialog.open(ProfileComponent, {
-          width: '450px',
-          data: this.user.id
-      });
+  logout() {
+    this.loginService.logout();
+    
+    this.router.navigateByUrl("/auth");
   }
 }

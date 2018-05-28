@@ -6,6 +6,7 @@ import { ForumComponent } from './forum/forum.component';
 import { ForumResolver } from './forum/forum.resolver';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
+import { UserListComponent } from './user-list/user-list.component';
 
 const routes: Routes = [
   { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard] },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'forum', component: ForumComponent, resolve: { forumData: ForumResolver }, runGuardsAndResolvers: 'always', canActivate: [AuthGuard] },
   { path: 'not-found', component: NotFoundComponent },
   { path: 'auth', component: LoginComponent },
+  { path: 'user-list', component: UserListComponent },
   { path: '**', redirectTo: '/forum' }
 ];
 

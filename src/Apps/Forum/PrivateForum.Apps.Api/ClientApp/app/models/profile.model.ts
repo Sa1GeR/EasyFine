@@ -4,7 +4,6 @@ export class ProfileModel {
   public middleName: string;
   public lastName: string;
   public email: string;
-  public avatarUrl: string;
+  public avatarUrl?: string;
   public isBlocked: boolean;
-  public isDeleted: boolean;
 }

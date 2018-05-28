@@ -8,8 +8,8 @@
       <p class="email">{{profile.email}}</p>
     </div>
   </div>
-  <mat-icon mat-list-icon (click)="logout()">exit_to_app</mat-icon>
-  <div *ngIf="!isLoggedIn" routerLink="/auth">
+  <mat-icon mat-list-icon *ngIf="isLoggedIn" (click)="logout()">exit_to_app</mat-icon>
+  <div *ngIf="!isLoggedIn" routerLink="/auth" class="logout">
     Log In
   </div>
 

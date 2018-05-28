@@ -16,11 +16,13 @@ mat-toolbar {
     flex-direction: row;
     align-items: center;
     border-radius: 5px;
+    padding: 0 10px 0 5px;
     cursor: pointer;
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.12);
     }
+    
 
     .avatar {
       margin: 8px;
@@ -42,6 +44,23 @@ mat-toolbar {
         }
       }
     }
+  }
+
+  mat-icon {
+    margin-left: 10px;
+    cursor: pointer;
+    padding: 5px;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  .logout {
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.12);
+    }
+    cursor: pointer;
+    padding: 5px;
   }
 
   

@@ -26,11 +26,9 @@ export class LoginService {
   }
 
   public logout() : Observable<any> {
-    return this.http.post('api/accounts/logout', {}).map(res => {
-      localStorage.removeItem('token');
-      this.isLoggedIn.next(false);
-      return res;
-    });
+    localStorage.removeItem('token');
+    this.isLoggedIn.next(false);
+    return of();
   }
 
   public register(registerModel: RegisterModel) {

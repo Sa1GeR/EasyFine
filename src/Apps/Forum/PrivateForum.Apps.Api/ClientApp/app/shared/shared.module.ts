@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatDialogModule, MatButtonModule, MatCardModule, MatListModule, MatIconModule, MatToolbarModule, MatProgressSpinnerModule, MatSnackBarModule, MatFormFieldModule, MatInputModule, MatChipsModule, MatTabsModule } from '@angular/material';
+import { MatDialogModule, MatButtonModule, MatCardModule, MatListModule, MatIconModule, MatToolbarModule, MatProgressSpinnerModule, MatSnackBarModule, MatFormFieldModule, MatInputModule, MatChipsModule, MatTabsModule, MatTableModule, MatCheckboxModule, MatPaginatorModule } from '@angular/material';
 import { MomentModule } from 'ngx-moment';
 import { NgxEditorModule } from 'ngx-editor';
 
@@ -26,7 +26,10 @@ const SHARED_MODULES = [
   MatFormFieldModule,
   MatInputModule,
   MatChipsModule,
-  MatTabsModule
+  MatTabsModule,
+  MatTableModule,
+  MatCheckboxModule,
+  MatPaginatorModule
 ];
 
 const SHARED_DECLARATIONS = [

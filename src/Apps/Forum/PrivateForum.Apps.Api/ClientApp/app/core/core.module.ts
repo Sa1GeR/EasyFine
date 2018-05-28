@@ -21,6 +21,7 @@ import { LoginComponent } from "./login/login.component";
 import { TokenInterceptor } from "../services/token.interceptor";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AuthGuard } from "./auth.guard";
+import { UserListComponent } from "./user-list/user-list.component";
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { AuthGuard } from "./auth.guard";
     ForumComponent,
     TopicComponent,
     LoginComponent,
+    UserListComponent,
     UpsertForumDialogComponent,
     UpsertTopicDialogComponent,
     SafePipe
