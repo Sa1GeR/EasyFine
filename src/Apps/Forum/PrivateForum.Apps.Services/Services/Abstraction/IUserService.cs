@@ -1,4 +1,5 @@
 ﻿using PrivateForum.App.Web.Services.Models;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -12,5 +13,6 @@ namespace PrivateForum.App.Web.Services.Abstraction
         Task<bool> BlockUser(int id);
         Task<bool> DeleteUser(int id);
         Task<bool> UploadAvatarAsync(int id, string fileName, Stream file);
+        Task<IEnumerable<UserProfileVM>> GetAllAsync();
     }
 }

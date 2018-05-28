@@ -5,6 +5,7 @@ using PrivateForum.App.Web.Services.Abstraction;
 using System.Threading.Tasks;
 using System.IO;
 using PrivateForum.Core;
+using System.Collections.Generic;
 
 namespace PrivateForum.App.Web.Services.Implementation
 {
@@ -32,6 +33,11 @@ namespace PrivateForum.App.Web.Services.Implementation
         public async Task<bool> DeleteUser(int id)
         {
             return await this._userRepository.DeleteUser(id);
+        }
+
+        public async Task<IEnumerable<UserProfileVM>> GetAllAsync()
+        {
+            return await this._userRepository.GetAllAsync();
         }
 
         public async Task<CurentUserVM> GetCurrentUserAsync()

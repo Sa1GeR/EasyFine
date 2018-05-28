@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { UserService, LoginService } from "../../services";
 import { UserModel } from "../../models";
 import { Router } from "@angular/router";
+import { ProfileComponent } from "../../core/profile/profile.component";
 
 @Component({
   selector: "app-header",
@@ -33,10 +34,15 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  openProfile() {}
-
   logout() {
     localStorage.removeItem("token");
     this.router.navigateByUrl("/auth");
+  }
+
+  openProfile() {
+      this.dialog.open(ProfileComponent, {
+          width: '450px',
+          data: this.user.id
+      });
   }
 }

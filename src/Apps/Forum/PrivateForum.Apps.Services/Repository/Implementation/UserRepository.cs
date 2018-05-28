@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Dapper;
 using PrivateForum;
 using System.IO;
+using System.Collections.Generic;
 
 namespace PrivateForum.App.Web.Services.Repository.Implementation
 {
@@ -32,6 +33,11 @@ namespace PrivateForum.App.Web.Services.Repository.Implementation
         {
             var parameters = new DynamicParameters(new { userId = id });
             return await connection.ExecuteScalarAsync<bool>("sp_Forum_UsersAppRepository_DeleteUser", parameters.AuditUpdate(audit), commandType: CommandType.StoredProcedure);
+        }
+
+        public async Task<IEnumerable<UserProfileVM>> GetAllAsync()
+        {
+            return await connection.QueryFirstOrDefaultAsync<IEnumerable<UserProfileVM>>("sp_Forum_UsersAppRepository_GetAll", null , commandType: CommandType.StoredProcedure);
         }
 
         public async Task<CurentUserVM> GetCurrentUserAsync(int userId)

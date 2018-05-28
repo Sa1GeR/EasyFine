@@ -2,6 +2,7 @@
 using PrivateForum.App.Web.Services.Models;
 using System.Threading.Tasks;
 using System.IO;
+using System.Collections.Generic;
 
 namespace PrivateForum.App.Web.Services.Repository.Abstraction
 {
@@ -12,5 +13,6 @@ namespace PrivateForum.App.Web.Services.Repository.Abstraction
         Task<bool> BlockUser(int id);
         Task<bool> DeleteUser(int id);
         Task<bool> SaveUserAvatar(int id, string url);
+        Task<IEnumerable<UserProfileVM>> GetAllAsync();
     }
 }

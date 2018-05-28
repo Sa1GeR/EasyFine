@@ -52,6 +52,8 @@ namespace PrivateForum.Apps.Api.Controllers
                 return BadRequest(new ArgumentException("Registration model is not valid!"));
 
             var result = await _userManager.CreateAsync(register.ToDomain(), register.Password);
+            var currentUser = await _userManager.FindByEmailAsync(register.Email);
+            await _userManager.AddToRoleAsync(currentUser, "user");
 
             if (result.Succeeded)
             {
@@ -68,7 +70,8 @@ namespace PrivateForum.Apps.Api.Controllers
             {
                 new Claim(JwtRegisteredClaimNames.Sub, email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Role, user.UserRoles.FirstOrDefault().ToString())
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("HnczRNSZ96EMCPw6H6nJQw2tbTDHIFJVknKxcN59RfPjuOE7xzs8ZwZfkQEyY0e"));

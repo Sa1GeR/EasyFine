@@ -30,7 +30,7 @@ import { AuthGuard } from "./auth.guard";
     CoreRoutes
   ],
   declarations: [
-    ProfileComponent,
+    
     NotFoundComponent,
     ForumComponent,
     TopicComponent,

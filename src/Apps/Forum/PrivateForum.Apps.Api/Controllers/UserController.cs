@@ -51,6 +51,18 @@ namespace PrivateForum.App.Web.Controllers
 
             return Ok(result);
         }
+        [HttpGet("getall")]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = await _userService.GetAllAsync();
+
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
+        }
 
         [HttpPost("block/{id}")]
         public async Task<IActionResult> BlockUser(int id)

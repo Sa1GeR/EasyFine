@@ -12,10 +12,12 @@ import { CoreModule } from './core/core.module';
 import { AppGuard } from './app.resolver';
 import { UserService, LoginService } from './services';
 import { TokenInterceptor } from './services/token.interceptor';
+import { ProfileComponent } from './core/profile/profile.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+      AppComponent,
+      ProfileComponent,
   ],
   imports: [
     BrowserModule,
