@@ -10,7 +10,7 @@ import { UserService } from "../../services";
 })
 export class UserListComponent implements AfterViewInit {
   dataSource: MatTableDataSource<ProfileModel>;
-  displayedColumns = ['id', 'name', 'email', 'isBlocked'];
+  displayedColumns = ['id', 'name', 'email', 'address', 'isBlocked'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -21,5 +21,11 @@ export class UserListComponent implements AfterViewInit {
       this.dataSource = new MatTableDataSource<ProfileModel>(res);
       this.dataSource.paginator = this.paginator;
     })
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); 
+    filterValue = filterValue.toLowerCase();
+    this.dataSource.filter = filterValue;
   }
 }

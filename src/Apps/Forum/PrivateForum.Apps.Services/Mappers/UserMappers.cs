@@ -15,7 +15,8 @@ namespace PrivateForum.Apps.Services.Mappers
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 UserName = user.UserName,
-                Email = user.Email
+                Email = user.Email,
+                Address = user.Address
             };
         }
     }

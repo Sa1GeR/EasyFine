@@ -35,8 +35,8 @@ export class LoginComponent {
       },
       err => {
         this.actionInProgress = false;
-        this.snackBar.open("Error trying to login.", null, {
-          duration: 2000
+        this.snackBar.open("Inalid login/password pair", null, {
+          duration: 3000
         });
       }
     );

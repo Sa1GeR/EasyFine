@@ -32,6 +32,10 @@ export class HeaderComponent implements OnInit {
             .getProfile(user.id.toString())
             .subscribe(profile => (this.profile = profile));
         });
+      } else {
+        this.user = null;
+        this.profile = null;
+        this.isLoggedIn = isLoggedIn;
       }
     });
   }
@@ -45,7 +49,6 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.loginService.logout();
-    
     this.router.navigateByUrl("/auth");
   }
 }

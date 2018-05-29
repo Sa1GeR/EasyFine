@@ -6,6 +6,7 @@
     ,@PasswordHash NVARCHAR(MAX)
     ,@UserName NVARCHAR(100)
     ,@DateCreated DATETIME
+	,@Address NVARCHAR(1000)
 AS
 	INSERT INTO   [dbo].[identity_Users]  
         ([FirstName]
@@ -26,9 +27,9 @@ AS
     SELECT @userId = @@IDENTITY;
 
 	INSERT INTO [dbo].[forum_UserProfiles]
-	([Id], IsBlocked, IsDeleted, Created, CreatedBy, Modified, ModifiedBy)
+	([Id], [Address], IsBlocked, IsDeleted, Created, CreatedBy, Modified, ModifiedBy)
 	VALUES
-	(@userId, 0, 0, @DateCreated, '101ed', @DateCreated, '101ed')
+	(@userId, @Address, 0, 0, @DateCreated, 'system', @DateCreated, 'system')
 
 	SELECT @userId
 RETURN 0

@@ -1,15 +1,15 @@
 <mat-toolbar color="primary">
   <span>Private Forum</span>
   <span class="filler"></span>
-  <div class="user-info" *ngIf="isLoggedIn" (click)="openProfile()">
+  <div class="user-info" *ngIf="user" (click)="openProfile()">
     <div class="avatar" [style.background-image.url]="profile?.avatarUrl"></div>
     <div class="name-container">
       <p class="name">{{profile.firstName}} {{profile.middleName}} {{profile.lastName}}</p>
       <p class="email">{{profile.email}}</p>
     </div>
   </div>
-  <mat-icon mat-list-icon *ngIf="isLoggedIn" (click)="logout()">exit_to_app</mat-icon>
-  <div *ngIf="!isLoggedIn" routerLink="/auth" class="logout">
+  <mat-icon mat-list-icon *ngIf="user" (click)="logout()">exit_to_app</mat-icon>
+  <div *ngIf="!user" routerLink="/auth" class="logout">
     Log In
   </div>
 

@@ -39,6 +39,7 @@ namespace PrivateForum.Apps.Services.Repository.Implementation.Identity
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
+                Address = user.Address,
                 PasswordHash = user.PasswordHash,
                 UserName = user.UserName,
                 DateCreated = user.DateCreated,
