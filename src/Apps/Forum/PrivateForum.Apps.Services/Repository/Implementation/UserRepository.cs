@@ -37,7 +37,7 @@ namespace PrivateForum.App.Web.Services.Repository.Implementation
 
         public async Task<IEnumerable<UserProfileVM>> GetAllAsync()
         {
-            return await connection.QueryFirstOrDefaultAsync<IEnumerable<UserProfileVM>>("sp_Forum_UsersAppRepository_GetAll", null , commandType: CommandType.StoredProcedure);
+            return await connection.QueryAsync<UserProfileVM>("sp_Forum_UsersAppRepository_GetAll", null , commandType: CommandType.StoredProcedure);
         }
 
         public async Task<CurentUserVM> GetCurrentUserAsync(int userId)

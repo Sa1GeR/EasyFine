@@ -120,6 +120,7 @@
     <Build Include="dbo\Stored Procedures\Security\UserStore\sp_Security_UserStore_UpdateAsync.sql" />
     <Build Include="dbo\Stored Procedures\Security\UserStore\sp_Security_UserStore_GetUsersInRole.sql" />
     <Build Include="dbo\Stored Procedures\Security\UserStore\sp_Security_UserStore_FindByEmailAsync.sql" />
+    <Build Include="dbo\Stored Procedures\Forum\UserAppRepository\sp_Forum_UsersAppRepository_GetAll.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Ed.Database.refactorlog" />

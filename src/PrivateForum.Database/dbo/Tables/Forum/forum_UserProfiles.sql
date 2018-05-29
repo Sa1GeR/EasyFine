@@ -8,5 +8,6 @@
     [Modified]                   DATETIME2 (7)   NOT NULL,
     [CreatedBy]                  NVARCHAR (100)  NOT NULL,
     [ModifiedBy]                 NVARCHAR (100)  NOT NULL,
-	CONSTRAINT [PK_dbo.forum_UserProfiles] PRIMARY KEY CLUSTERED ([Id])
+	[Address] NCHAR(1000) NULL DEFAULT '', 
+    CONSTRAINT [PK_dbo.forum_UserProfiles] PRIMARY KEY CLUSTERED ([Id])
 )

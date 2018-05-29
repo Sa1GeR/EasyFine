@@ -53,4 +53,8 @@ export class UserService {
   private isUserInRole(user: UserModel, role: "Administrator" | "Client"): Observable<boolean> {
       return user ? of(user.role == role) : this.getCurrentUser().map(user => user ? user.role == role : false);
   }
+
+  public getUsers(): Observable<ProfileModel[]> {
+    return this.http.get<ProfileModel[]>('api/user/getall');
+  }
 }
