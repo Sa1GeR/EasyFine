@@ -4,6 +4,7 @@ export class RegisterModel {
   public lastName: string;
   public email: string;
   public address: string;
+  public birthday: Date;
   public password: string;
   public repeatPassword: string;
 }

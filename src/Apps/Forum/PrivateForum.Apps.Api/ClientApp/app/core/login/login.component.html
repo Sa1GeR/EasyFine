@@ -18,7 +18,7 @@
         <mat-card>
             <mat-card-content>
                 <mat-form-field>
-                <input matInput placeholder="First Name" [(ngModel)]="registerModel.firstName" required>
+                    <input matInput placeholder="First Name" [(ngModel)]="registerModel.firstName" required>
                 </mat-form-field>
                 <mat-form-field>
                     <input matInput placeholder="Last Name" [(ngModel)]="registerModel.lastName" required>
@@ -31,6 +31,9 @@
                 </mat-form-field>
                 <mat-form-field>
                     <input matInput placeholder="Address" type="text" [(ngModel)]="registerModel.address" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Birthday" type="date" [(ngModel)]="registerModel.birthday" required>
                 </mat-form-field>
                 <mat-form-field>
                     <input matInput placeholder="Password" type="password" [(ngModel)]="registerModel.password" required>

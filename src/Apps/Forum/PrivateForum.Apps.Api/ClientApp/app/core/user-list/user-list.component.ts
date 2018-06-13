@@ -10,7 +10,8 @@ import { UserService } from "../../services";
 })
 export class UserListComponent implements AfterViewInit {
   dataSource: MatTableDataSource<ProfileModel>;
-  displayedColumns = ['id', 'name', 'email', 'address', 'isBlocked'];
+
+    displayedColumns = ['id', 'name', 'email', 'address', 'birthday', 'isBlocked'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 

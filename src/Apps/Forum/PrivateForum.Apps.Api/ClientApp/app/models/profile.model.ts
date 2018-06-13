@@ -6,5 +6,6 @@ export class ProfileModel {
   public email: string;
   public address: string;
   public avatarUrl?: string;
-  public isBlocked: boolean;
+    public isBlocked: boolean;
+    public birthday: Date;
 }

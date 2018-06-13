@@ -6,6 +6,7 @@
     [PasswordHash]                 NVARCHAR (MAX)   NULL,
     [UserName]                     NVARCHAR (MAX)   NULL,
     [DateCreated]                  DATETIME         DEFAULT (GETUTCDATE()) NOT NULL,
+    [BirthDay]					   DATETIME         DEFAULT (GETUTCDATE()) NOT NULL,
     CONSTRAINT [PK_dbo.identity_Users] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 

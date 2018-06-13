@@ -7,6 +7,7 @@
     ,@UserName NVARCHAR(100)
     ,@DateCreated DATETIME
 	,@Address NVARCHAR(1000)
+	,@Birthday DATETIME
 AS
 	INSERT INTO   [dbo].[identity_Users]  
         ([FirstName]
@@ -14,14 +15,16 @@ AS
         ,[Email]
         ,[PasswordHash]
         ,[UserName]
-        ,[DateCreated])
+        ,[DateCreated]
+		,[BirthDay])
     VALUES
         (@FirstName
         ,@LastName
         ,@Email
         ,@PasswordHash
         ,@UserName
-        ,@DateCreated);
+        ,@DateCreated
+		,@Birthday);
 
 	DECLARE @userId INT;
     SELECT @userId = @@IDENTITY;

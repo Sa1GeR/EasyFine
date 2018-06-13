@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using PrivateForum.Core;
 using System.Collections.Generic;
+using PrivateForum.Apps.Services.Models.Identity;
 
 namespace PrivateForum.App.Web.Services.Implementation
 {
@@ -35,7 +36,7 @@ namespace PrivateForum.App.Web.Services.Implementation
             return await this._userRepository.DeleteUser(id);
         }
 
-        public async Task<IEnumerable<UserProfileVM>> GetAllAsync()
+        public async Task<IEnumerable<User>> GetAllAsync()
         {
             return await this._userRepository.GetAllAsync();
         }

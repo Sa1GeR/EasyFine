@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -27,7 +28,7 @@ namespace PrivateForum.Apps.Api.Controllers
             _signInManager = signInManager;
             _userManager = userManager;
         }
-
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody]UserLoginVM user)
         {
@@ -44,7 +45,7 @@ namespace PrivateForum.Apps.Api.Controllers
 
             return Unauthorized();
         }
-
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody]UserRegisterVM register)
         {

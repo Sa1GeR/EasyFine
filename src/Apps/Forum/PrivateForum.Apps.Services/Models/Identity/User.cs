@@ -16,6 +16,7 @@ namespace PrivateForum.Apps.Services.Models.Identity
         public string PasswordHash { get; set; }
         public string UserName { get; set; }
         public DateTime DateCreated { get; set; }
+        public DateTime Birthday { get; set; }
 
         public IReadOnlyCollection<string> UserRoles { get; private set; }
 

@@ -43,6 +43,7 @@ namespace PrivateForum.Apps.Services.Repository.Implementation.Identity
                 PasswordHash = user.PasswordHash,
                 UserName = user.UserName,
                 DateCreated = user.DateCreated,
+                Birthday = user.Birthday,
             };
             var userId = await this.connection.ExecuteScalarAsync<int>("sp_Security_UserStore_CreateAsync", parameters, commandType: CommandType.StoredProcedure);
             user.SetIdentificator(userId);

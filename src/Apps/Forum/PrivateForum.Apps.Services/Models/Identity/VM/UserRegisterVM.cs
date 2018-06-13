@@ -13,6 +13,8 @@ namespace PrivateForum.Apps.Services.Models.Identity.VM
         public string Password { get; set; }
         public string Address { get; set; }
 
+        public DateTime Birthday { get; set; }
+
         public bool Validate()
         {
             return !string.IsNullOrEmpty(FirstName) && !string.IsNullOrEmpty(LastName) && !string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Password);
